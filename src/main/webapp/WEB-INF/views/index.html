@@ -11,6 +11,8 @@
  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
  <link rel="stylesheet" type="text/css" href="css/app.css" />
  <script src="js/lib/angular.min.js" ></script>
+ <script src="js/lib/jquery-3.2.0.min.js" ></script>
+ <script src="js/lib/bootstrap.min.js" ></script>
  <script src="js/app.js" ></script>
  <script src="js/contatoController.js" ></script>
  <script src="js/service/contatoService.js" ></script>
@@ -19,7 +21,42 @@
 </head>
 
 <body ng-controller="contatoController as ctrl">
-<h1 style="text-align: center;">Contatos</h1>
+<div class="container"><h2>Example 3 </h2></div>
+<div id="exTab3" class="container">	
+<ul  class="nav nav-pills">
+			<li class="active">
+        <a  href="#1b" data-toggle="tab">Overview</a>
+			</li>
+			<li><a href="#2b" data-toggle="tab">Using nav-pills</a>
+			</li>
+			<li><a href="#3b" data-toggle="tab">Applying clearfix</a>
+			</li>
+  		<li><a href="#4a" data-toggle="tab">Background color</a>
+			</li>
+		</ul>
+
+			<div class="tab-content clearfix">
+			  <div class="tab-pane active" id="1b">
+          <h3>Same as example 1 but we have now styled the tab's corner</h3>
+				</div>
+				<div class="tab-pane" id="2b">
+					<div th:include="contatos::header"></div>
+          <h3>We use the class nav-pills instead of nav-tabs which automatically creates a background color for the tab</h3>
+				</div>
+        <div class="tab-pane" id="3b">
+          <h3>We applied clearfix to the tab-content to rid of the gap between the tab and the content</h3>
+				</div>
+          <div class="tab-pane" id="4b">
+          <h3>We use css to change the background color of the content to be equal to the tab</h3>
+				</div>
+			</div>
+  </div>
+
+<p></p>
+<p></p>
+
+
+<h1 style="text-align: center;">Cadastrar contatos</h1>
 
 
 
@@ -80,36 +117,38 @@
             </div>
         </div>    
     </div>
-<!--     <div class="panel panel-default">
+<!--      <div class="panel panel-default">
         Default panel contents
-        <div class="panel-heading"><span class="lead">List of Users </span></div>
+        <div class="panel-heading"><span class="lead">Contatos </span></div>
         <div class="panel-body">
             <div class="table-responsive">
                 <table class="table table-hover">
                     <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>NAME</th>
-                        <th>AGE</th>
-                        <th>SALARY</th>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Telefone</th>
+                        <th>Email</th>
+                        <th>Empresa</th>
                         <th width="100"></th>
                         <th width="100"></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="u in ctrl.getAllUsers()">
-                        <td>{{u.id}}</td>
-                        <td>{{u.name}}</td>
-                        <td>{{u.age}}</td>
-                        <td>{{u.salary}}</td>
-                        <td><button type="button" ng-click="ctrl.editUser(u.id)" class="btn btn-success custom-width">Edit</button></td>
-                        <td><button type="button" ng-click="ctrl.removeUser(u.id)" class="btn btn-danger custom-width">Remove</button></td>
+                    <tr ng-repeat="contato in contatos">
+                        <td>{{contato.id}}</td>
+                        <td>{{contato.nome}}</td>
+                        <td>{{contato.telefone}}</td>
+                        <td>{{contato.email}}</td>
+                        <td>{{contato.empresa}}</td>
+                        <td><button type="button" ng-click="editarContato(contato)" class="btn btn-success custom-width">Editar</button></td>
+                        <td><button type="button" ng-click="deletarContato(contato)" class="btn btn-danger custom-width">Remover</button></td>
                     </tr>
                     </tbody>
                 </table>      
             </div>
         </div>
-    </div> -->
+    </div>  -->
 </div>
 
 </body>

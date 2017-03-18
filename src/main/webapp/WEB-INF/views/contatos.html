@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="contatoApp" xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org" 
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Insert title here</title>
+</head>
+<body>
+<div th:fragment="header">
+     <div class="panel panel-default">
+        Default panel contents
+        <div class="panel-heading"><span class="lead">Contatos </span></div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Telefone</th>
+                        <th>Email</th>
+                        <th>Empresa</th>
+                        <th width="100"></th>
+                        <th width="100"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="contato in contatos">
+                        <td>{{contato.id}}</td>
+                        <td>{{contato.nome}}</td>
+                        <td>{{contato.telefone}}</td>
+                        <td>{{contato.email}}</td>
+                        <td>{{contato.empresa}}</td>
+                        <td><button type="button" ng-click="editarContato(contato)" class="btn btn-success custom-width">Editar</button></td>
+                        <td><button type="button" ng-click="deletarContato(contato)" class="btn btn-danger custom-width">Remover</button></td>
+                    </tr>
+                    </tbody>
+                </table>      
+            </div>
+        </div>
+    </div> 
+</div>
+</body>
+</html>

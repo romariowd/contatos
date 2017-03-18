@@ -1,6 +1,6 @@
 angular.module("contatoApp").factory("contatosAPI",function($http,config){
 
-	var _saveContact = function(contato){
+	var _salvarContato = function(contato){
 			return $http({
 					method:'POST',
 					url: config.baseUrl + "/salvar",
@@ -16,6 +16,6 @@ angular.module("contatoApp").factory("contatosAPI",function($http,config){
 
 		return {
 			getContatos:_getContatos,
-			saveContato:_saveContact
+			saveContato:_salvarContato
 		};
 });
