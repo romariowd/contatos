@@ -1,0 +1,4 @@
+br\com\contatos\HomeController.class
+br\com\contatos\ContatoRepository.class
+br\com\contatos\Contato.class
+br\com\contatos\ContatosApplication.class
