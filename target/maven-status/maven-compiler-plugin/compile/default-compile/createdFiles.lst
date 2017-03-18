@@ -1,4 +1,7 @@
 br\com\contatos\HomeController.class
+br\com\contatos\QueryResult.class
+br\com\contatos\ContatosApplication.class
 br\com\contatos\ContatoRepository.class
 br\com\contatos\Contato.class
-br\com\contatos\ContatosApplication.class
+br\com\contatos\controller\ContatoRestController.class
+br\com\contatos\config\ViewConfig.class
