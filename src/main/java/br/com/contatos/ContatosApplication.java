@@ -14,10 +14,10 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguratio
 @Import(RepositoryRestMvcConfiguration.class)
 @EnableAutoConfiguration
 public class ContatosApplication {
-
+	 
 	public static void main(String[] args) {
 		SpringApplication.run(ContatosApplication.class);
 
 	}
-
+	
 }

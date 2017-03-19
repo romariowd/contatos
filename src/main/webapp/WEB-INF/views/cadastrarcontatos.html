@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html ng-app="contatoApp" xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org" 
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+</head>
+<body>
+<div class="generic-container" th:fragment="cadastrar">
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading"><span class="lead">Specific User </span></div>
+        <div class="panel-body">
+            <div class="formcontainer">
+                <div class="alert alert-success" role="alert" ng-if="ctrl.successMessage">{{ctrl.successMessage}}</div>
+                <div class="alert alert-danger" role="alert" ng-if="ctrl.errorMessage">{{ctrl.errorMessage}}</div>
+                <form ng-submit="ctrl.submit()" name="myForm" class="form-horizontal">
+                    <input type="hidden" ng-model="ctrl.user.id" />
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-lable" for="uname">Nome</label>
+                            <div class="col-md-7">
+                                <input type="text" ng-model="ctrl.contato.nome" id="uname" class="username form-control input-sm" placeholder="Digite o seu nome" required = "true" ng-minlength = "3"/>
+                            </div>
+                        </div>
+                    </div>
+ 
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-lable" for="telefone">Telefone</label>
+                            <div class="col-md-7">
+                                <input type="text" ng-model="ctrl.contato.telefone" id="telefone" class="form-control input-sm" placeholder="Digite o seu telefone" required = "true"/>
+                            </div>
+                        </div>
+                    </div>
+     
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-lable" for="email">Email</label>
+                            <div class="col-md-7">
+                                <input type="text" ng-model="ctrl.contato.email" id="email" class="form-control input-sm" placeholder="Digite o seu email" required = "true"/>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-lable" for="empresa">Empresa</label>
+                            <div class="col-md-7">
+                                <input type="text" ng-model="ctrl.contato.empresa" id="empresa" class="form-control input-sm" placeholder="Digite o nome da empresa" required = "true"/>
+                            </div>
+                        </div>
+                    </div>
+ 
+                    <div class="row">
+                        <div class="form-actions floatRight">
+                            <input type="button" ng-click="salvarContato(ctrl.contato)" value="Cadastrar contato" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine"/>
+                            <button type="button" ng-click="ctrl.reset()" class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Limpar</button>
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>    
+    </div>
+</div>
+</body>
+</html>

@@ -21,15 +21,15 @@
 </head>
 
 <body ng-controller="contatoController as ctrl">
-<div class="container"><h2>Example 3 </h2></div>
+<div class="container"><h2> Aplicação de contatos </h2></div>
 <div id="exTab3" class="container">	
 <ul  class="nav nav-pills">
 			<li class="active">
-        <a  href="#1b" data-toggle="tab">Overview</a>
+        <a  href="#1b" data-toggle="tab">Cadastrar contato</a>
 			</li>
-			<li><a href="#2b" data-toggle="tab">Using nav-pills</a>
+			<li><a href="#2b" data-toggle="tab">Contatos</a>
 			</li>
-			<li><a href="#3b" data-toggle="tab">Applying clearfix</a>
+			<li><a href="#3b" data-toggle="tab">Importar contatos</a>
 			</li>
   		<li><a href="#4a" data-toggle="tab">Background color</a>
 			</li>
@@ -37,119 +37,18 @@
 
 			<div class="tab-content clearfix">
 			  <div class="tab-pane active" id="1b">
-          <h3>Same as example 1 but we have now styled the tab's corner</h3>
+          	<div th:include="cadastrarcontatos::cadastrar"></div>
 				</div>
 				<div class="tab-pane" id="2b">
-					<div th:include="contatos::header"></div>
-          <h3>We use the class nav-pills instead of nav-tabs which automatically creates a background color for the tab</h3>
+					<div th:include="contatos::contatos"></div>
 				</div>
         <div class="tab-pane" id="3b">
-          <h3>We applied clearfix to the tab-content to rid of the gap between the tab and the content</h3>
+         	<div th:include="importacaoxml::importar"></div>
 				</div>
           <div class="tab-pane" id="4b">
           <h3>We use css to change the background color of the content to be equal to the tab</h3>
 				</div>
 			</div>
   </div>
-
-<p></p>
-<p></p>
-
-
-<h1 style="text-align: center;">Cadastrar contatos</h1>
-
-
-
-<div class="generic-container">
-    <div class="panel panel-default">
-        <!-- Default panel contents -->
-        <div class="panel-heading"><span class="lead">Specific User </span></div>
-        <div class="panel-body">
-            <div class="formcontainer">
-                <div class="alert alert-success" role="alert" ng-if="ctrl.successMessage">{{ctrl.successMessage}}</div>
-                <div class="alert alert-danger" role="alert" ng-if="ctrl.errorMessage">{{ctrl.errorMessage}}</div>
-                <form ng-submit="ctrl.submit()" name="myForm" class="form-horizontal">
-                    <input type="hidden" ng-model="ctrl.user.id" />
-                    <div class="row">
-                        <div class="form-group col-md-12">
-                            <label class="col-md-2 control-lable" for="uname">Nome</label>
-                            <div class="col-md-7">
-                                <input type="text" ng-model="ctrl.contato.nome" id="uname" class="username form-control input-sm" placeholder="Digite o seu nome" required = "true" ng-minlength = "3"/>
-                            </div>
-                        </div>
-                    </div>
- 
-                    <div class="row">
-                        <div class="form-group col-md-12">
-                            <label class="col-md-2 control-lable" for="telefone">Telefone</label>
-                            <div class="col-md-7">
-                                <input type="text" ng-model="ctrl.contato.telefone" id="telefone" class="form-control input-sm" placeholder="Digite o seu telefone" required = "true"/>
-                            </div>
-                        </div>
-                    </div>
-     
-                    <div class="row">
-                        <div class="form-group col-md-12">
-                            <label class="col-md-2 control-lable" for="email">Email</label>
-                            <div class="col-md-7">
-                                <input type="text" ng-model="ctrl.contato.email" id="email" class="form-control input-sm" placeholder="Digite o seu email" required = "true"/>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="form-group col-md-12">
-                            <label class="col-md-2 control-lable" for="empresa">Empresa</label>
-                            <div class="col-md-7">
-                                <input type="text" ng-model="ctrl.contato.empresa" id="empresa" class="form-control input-sm" placeholder="Digite o nome da empresa" required = "true"/>
-                            </div>
-                        </div>
-                    </div>
- 
-                    <div class="row">
-                        <div class="form-actions floatRight">
-                            <input type="button" ng-click="salvarContato(ctrl.contato)" value="Cadastrar contato" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine"/>
-                            <button type="button" ng-click="ctrl.reset()" class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Limpar</button>
-                        </div>
-                    </div>
-                    
-                </form>
-            </div>
-        </div>    
-    </div>
-<!--      <div class="panel panel-default">
-        Default panel contents
-        <div class="panel-heading"><span class="lead">Contatos </span></div>
-        <div class="panel-body">
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Nome</th>
-                        <th>Telefone</th>
-                        <th>Email</th>
-                        <th>Empresa</th>
-                        <th width="100"></th>
-                        <th width="100"></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr ng-repeat="contato in contatos">
-                        <td>{{contato.id}}</td>
-                        <td>{{contato.nome}}</td>
-                        <td>{{contato.telefone}}</td>
-                        <td>{{contato.email}}</td>
-                        <td>{{contato.empresa}}</td>
-                        <td><button type="button" ng-click="editarContato(contato)" class="btn btn-success custom-width">Editar</button></td>
-                        <td><button type="button" ng-click="deletarContato(contato)" class="btn btn-danger custom-width">Remover</button></td>
-                    </tr>
-                    </tbody>
-                </table>      
-            </div>
-        </div>
-    </div>  -->
-</div>
-
 </body>
 </html>

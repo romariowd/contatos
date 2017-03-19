@@ -43,6 +43,10 @@ body {
   border-radius: 4px 4px 0 0 ;
 }
 
+#exTab3 .nav-pills {
+	margin-left: 15px;
+}
+
 #exTab3 .tab-content {
   padding : 5px 15px;
 }

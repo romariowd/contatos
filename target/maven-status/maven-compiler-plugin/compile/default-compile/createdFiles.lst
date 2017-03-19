@@ -1,3 +1,4 @@
+br\com\contatos\controller\UploadController.class
 br\com\contatos\HomeController.class
 br\com\contatos\QueryResult.class
 br\com\contatos\ContatosApplication.class
