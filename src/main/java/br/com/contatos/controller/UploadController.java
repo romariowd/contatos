@@ -12,6 +12,7 @@ import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,14 +20,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.com.contatos.Contato;
+import br.com.contatos.domain.Contato;
 import br.com.contatos.importcontact.ContactCreator;
 import br.com.contatos.importcontact.ContactCreatorFactory;
 import br.com.contatos.importcontact.ContactCreatorListener;
 import br.com.contatos.importcontact.SourceType;
+import br.com.contatos.service.ContactService;
 
 @Controller
 public class UploadController {
+	@Autowired
+	private ContactService contactService;
 	
 	
 	@PostMapping("/upload")
@@ -46,8 +50,10 @@ public class UploadController {
            creator.createContactFromSource("C:\\Users\\Romario\\Desktop\\contatos.xml", new ContactCreatorListener() {
 			
 			@Override
-			public void onComplete(List<Contato> contatos) {
-				
+			public void onComplete(List<Contato> contacts) {
+					if(contacts != null && contacts.size() > 0){
+						contactService.importContacts(contacts);
+					}
 				
 			}
 		});

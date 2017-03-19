@@ -2,8 +2,7 @@ br\com\contatos\controller\UploadController.class
 br\com\contatos\importcontact\ContactCreatorListener.class
 br\com\contatos\importcontact\ContactCreatorJSON.class
 br\com\contatos\ContatosApplication.class
-br\com\contatos\ContatoRepository.class
-br\com\contatos\Contato.class
+br\com\contatos\service\ContactServiceImpl.class
 br\com\contatos\importcontact\ContactCreator.class
 br\com\contatos\config\ViewConfig.class
 br\com\contatos\importcontact\ContactCreatorFactory.class
@@ -12,6 +11,9 @@ br\com\contatos\importcontact\SourceType.class
 br\com\contatos\QueryResult.class
 br\com\contatos\importcontact\ContactCreatorFactory$1.class
 br\com\contatos\importcontact\ContactCreatorXML.class
+br\com\contatos\domain\Contato.class
+br\com\contatos\service\ContatoRepository.class
 br\com\contatos\controller\UploadController$1.class
 br\com\contatos\controller\ContatoRestController.class
+br\com\contatos\service\ContactService.class
 br\com\contatos\importcontact\ContactCreatorPlainText.class

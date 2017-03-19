@@ -1,7 +1,7 @@
 package br.com.contatos.importcontact;
 import java.util.List;
 
-import br.com.contatos.Contato;
+import br.com.contatos.domain.Contato;
 
 public interface ContactCreatorListener {
 	

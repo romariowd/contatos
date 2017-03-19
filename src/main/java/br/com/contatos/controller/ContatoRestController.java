@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.contatos.Contato;
-import br.com.contatos.ContatoRepository;
+import br.com.contatos.domain.Contato;
+import br.com.contatos.service.ContactService;
+import br.com.contatos.service.ContatoRepository;
 import br.com.contatos.QueryResult;
 
 @CrossOrigin(maxAge = 3600)
@@ -20,8 +21,10 @@ import br.com.contatos.QueryResult;
 @RequestMapping("/contato")
 public class ContatoRestController {
 	
+//	@Autowired
+//	private ContatoRepository repository;
 	@Autowired
-	private ContatoRepository repository;
+	private ContactService contactService;
 	
 	@Autowired
 	private QueryResult result;
@@ -31,7 +34,7 @@ public class ContatoRestController {
 	public  QueryResult salvar(@RequestBody Contato contato){
 		
 		try {
-			repository.save(contato);
+			contactService.saveContact(contato);
 			
 			result.setCodigo(1);
 			result.setMensagem("Registro inserido com sucesso!");
@@ -46,7 +49,7 @@ public class ContatoRestController {
 	
 	@RequestMapping(value="/obter",method = RequestMethod.GET)
 	public List<Contato> getTodosContatos(){
-		 return repository.findAll();
+		 return contactService.getAllContacts();
 	}
 
 }
