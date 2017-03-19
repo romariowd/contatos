@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Iterator;
+import java.util.List;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -17,6 +18,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import br.com.contatos.Contato;
+import br.com.contatos.importcontact.ContactCreator;
+import br.com.contatos.importcontact.ContactCreatorFactory;
+import br.com.contatos.importcontact.ContactCreatorListener;
+import br.com.contatos.importcontact.SourceType;
 
 @Controller
 public class UploadController {
@@ -35,7 +42,15 @@ public class UploadController {
 
            SAXReader reader = new SAXReader();
            Document document = reader.read(file.getInputStream());
-           treeWalk(document);
+           ContactCreator creator = ContactCreatorFactory.getContactCreator(SourceType.XML);
+           creator.createContactFromSource("C:\\Users\\Romario\\Desktop\\contatos.xml", new ContactCreatorListener() {
+			
+			@Override
+			public void onComplete(List<Contato> contatos) {
+				
+				
+			}
+		});
            
 
 
@@ -46,22 +61,5 @@ public class UploadController {
         return "index";
     }
 	
-	public void treeWalk(Document document) {
-        treeWalk( document.getRootElement() );
-    }
-
-    public void treeWalk(Element element) {
-        for ( int i = 0, size = element.nodeCount(); i < size; i++ ) {
-            Node node = element.node(i);
-            if ( node instanceof Element ) {
-            	Element el = (Element) node;
-            	System.out.println(el.attributes());
-                treeWalk( (Element) node );
-            }
-            else {
-                System.out.println(node.getStringValue());
-            }
-        }
-    }
 
 }

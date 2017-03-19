@@ -1,9 +1,16 @@
 package br.com.contatos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Transient;
 
 @Entity
 public class Contato {
@@ -14,6 +21,12 @@ public class Contato {
 	private String telefone;
 	private String email;
 	private String empresa;
+	@JoinTable(name="amigos",joinColumns={@JoinColumn(name="contato_id")},
+			inverseJoinColumns={@JoinColumn(name="amigo_id")})
+	@ManyToMany
+	private List<Contato> contatos;
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -45,7 +58,13 @@ public class Contato {
 		this.empresa = empresa;
 	}
 	
+	public List<Contato> getContatos() {
+		return contatos;
+	}
 	
+	public void setContatos(List<Contato> contatos) {
+		this.contatos = contatos;
+	}
 	
 	@Override
 	public int hashCode() {

@@ -31,7 +31,6 @@ public class ContatoRestController {
 	public  QueryResult salvar(@RequestBody Contato contato){
 		
 		try {
-		
 			repository.save(contato);
 			
 			result.setCodigo(1);
