@@ -87,4 +87,11 @@ public class ContactServiceImpl implements ContactService {
 		
 		return ctsAmigos;
 	}
+
+	@Override
+	public List<Contato> findByNomeContaining(String nome) {
+		return contactRepository.findByNomeContaining(nome);
+	}
+
+
 }

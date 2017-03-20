@@ -1,1 +1,1 @@
-angular.module("contatoApp",[]);
+angular.module("contatoApp",['ngAnimate', 'ngSanitize', 'ui.bootstrap']);

@@ -13,9 +13,17 @@ angular.module("contatoApp").factory("contatosAPI",function($http,config){
 					url: config.baseUrl + "/obter"
 				});
 	};
+	
+	var _getContatoByName = function(nome){
+		return $http({
+				method:'GET',
+				url: config.baseUrl + "/nome/" + nome
+			});
+};
 
 		return {
 			getContatos:_getContatos,
-			saveContato:_salvarContato
+			saveContato:_salvarContato,
+			getContatoByName:_getContatoByName
 		};
 });

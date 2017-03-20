@@ -11,5 +11,7 @@ public interface ContactService {
 	void deleteContact(Long id);
 	
 	void importContacts(List<Contato> contacts);
+	
+	List<Contato> findByNomeContaining(String nome);
 
 }

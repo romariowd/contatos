@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org" 
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="ISO_8859_1"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Insert title here</title>
+</head>
+<body>
+
+<div th:fragment="download" class='container-fluid typeahead-demo'>
+<input type="text" ng-model="selected" ng-change="lookupContact(selected)" uib-typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control"/>
+<button type="button" class="btn btn-success custom-width">Donwload</button>
+<a  href="/download">Teste download</a>
+</div>
+</body>
+</html>

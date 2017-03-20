@@ -5,6 +5,7 @@ body, #mainWrapper {
 
 body, .form-control{
 	font-size:12px!important;
+	width: 400px;
 }
 
 .floatRight{
