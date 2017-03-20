@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,8 +23,6 @@ import br.com.contatos.QueryResult;
 @RequestMapping("/contato")
 public class ContatoRestController {
 	
-//	@Autowired
-//	private ContatoRepository repository;
 	@Autowired
 	private ContactService contactService;
 	
@@ -53,9 +52,9 @@ public class ContatoRestController {
 		 return contactService.getAllContacts();
 	}
 	
-	@RequestMapping(value="/nome",method = RequestMethod.GET)
-	public List<Contato> getContatoByNome(@RequestParam(value = "nome") String nome){
-		 return contactService.findByNomeContaining(nome);
+	@RequestMapping(value="/pesquisar/{nome}",method = RequestMethod.GET)
+	public List<Contato> getContatoByNome(@PathVariable(value="nome") String nome){
+		 return contactService.findByNomeStartingWith(nome);
 	}
 
 }

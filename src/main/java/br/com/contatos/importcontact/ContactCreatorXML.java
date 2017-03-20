@@ -64,6 +64,7 @@ public class ContactCreatorXML implements ContactCreator {
    					break;
    				case "amigo":
    				Contato amigo = new Contato();
+   				if(el.attributeValue("id") != null && !el.attributeValue("id").isEmpty())
    				amigo.setId(Long.parseLong(el.attributeValue("id")));
    				amigo.setEmail(el.attributeValue("email"));
    				contato.getContatos().add(amigo);

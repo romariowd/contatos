@@ -12,6 +12,8 @@ public interface ContactService {
 	
 	void importContacts(List<Contato> contacts);
 	
-	List<Contato> findByNomeContaining(String nome);
+	List<Contato> findByNomeStartingWith(String nome);
+	
+	Contato findContatoByNome(String nome);
 
 }

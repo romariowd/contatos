@@ -11,9 +11,12 @@
 <body>
 
 <div th:fragment="download" class='container-fluid typeahead-demo'>
-<input type="text" ng-model="selected" ng-change="lookupContact(selected)" uib-typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control"/>
-<button type="button" class="btn btn-success custom-width">Donwload</button>
-<a  href="/download">Teste download</a>
-</div>
+ <input type="text" ng-model="contatoSelecionado" placeholder="Digite o nome do contato" uib-typeahead="contato.nome for contato in lookupContact($viewValue)" class="form-control"/>  
+ <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+ <p></p>
+<a ng-href="contato/download/{{contatoSelecionado}}" target="_self" class="btn btn-primary">Download XML</a>
+</div> 
+
+
 </body>
 </html>

@@ -11,9 +11,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Transient;
-
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement
 @Entity
 public class Contato {
+	@XmlAttribute
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
@@ -21,6 +29,8 @@ public class Contato {
 	private String telefone;
 	private String email;
 	private String empresa;
+	@XmlElementWrapper(name="amigos")
+	@XmlElement(name="contato")
 	@JoinTable(name="amigos",joinColumns={@JoinColumn(name="contato_id")},
 			inverseJoinColumns={@JoinColumn(name="amigo_id")})
 	@ManyToMany

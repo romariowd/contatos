@@ -12,5 +12,6 @@ import br.com.contatos.domain.Contato;
 public interface ContatoRepository extends JpaRepository<Contato, Long> {
 
 	Contato findContactByEmail(String email);
-	List<Contato> findByNomeContaining(String nome);
+	Contato findContactByNome(String nome);
+	List<Contato> findByNomeStartingWithIgnoreCase(String nome);
 }

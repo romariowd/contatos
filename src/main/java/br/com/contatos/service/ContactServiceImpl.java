@@ -48,21 +48,13 @@ public class ContactServiceImpl implements ContactService {
 					Contato contact = contacts.get(i);
 					if(contact.getId() == null){
 						Contato c = contactRepository.findContactByEmail(contact.getEmail());
-						if(c == null){
+						if(c == null){//contato não existe
 							List<Contato> ctsAmigos = new ArrayList<>(contact.getContatos());
 							contact.getContatos().clear();
 							c = contactRepository.save(contact);
-							for(int x = 0; x < ctsAmigos.size();x++){
-								Contato cAmigo = ctsAmigos.get(x);
-								Contato c2 = contactRepository.findContactByEmail(cAmigo.getEmail());
-								if(c2 != null){
-									c.getContatos().add(c2);
-								}
-								
-							}
+							c.getContatos().addAll(lookForFriends(ctsAmigos));
 						}
 							
-						
 					}else{
 					 Contato contatoArmazenado = contactRepository.findOne(contact.getId());
 					 List<Contato> friendsAlreadySaved = contatoArmazenado.getContatos();
@@ -89,8 +81,13 @@ public class ContactServiceImpl implements ContactService {
 	}
 
 	@Override
-	public List<Contato> findByNomeContaining(String nome) {
-		return contactRepository.findByNomeContaining(nome);
+	public List<Contato> findByNomeStartingWith(String nome) {
+		return contactRepository.findByNomeStartingWithIgnoreCase(nome);
+	}
+
+	@Override
+	public Contato findContatoByNome(String nome) {
+		return contactRepository.findContactByNome(nome);
 	}
 
 
